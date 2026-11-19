@@ -1,0 +1,99 @@
+name: Stipple
+options:
+  bundleIdPrefix: com.adonis
+  deploymentTarget:
+    iOS: "26.0"
+    watchOS: "26.0"
+  createIntermediateGroups: true
+  indentWidth: 4
+  tabWidth: 4
+  usesTabs: true
+settings:
+  base:
+    DEVELOPMENT_TEAM: P6PV2R9443
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_APPROACHABLE_CONCURRENCY: YES
+    SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+targets:
+  Stipple:
+    type: application
+    platform: iOS
+    sources:
+      - iOS
+      - Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.adonis.Stipple
+        INFOPLIST_KEY_CFBundleDisplayName: Stipple
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.lifestyle
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1"
+    dependencies:
+      - target: StippleWatch
+  StippleWatch:
+    type: application
+    platform: watchOS
+    sources:
+      - Watch
+      - Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.adonis.Stipple.watchkitapp
+        INFOPLIST_KEY_CFBundleDisplayName: Stipple
+        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.adonis.Stipple
+        INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp: NO
+        GENERATE_INFOPLIST_FILE: YES
+        SKIP_INSTALL: YES
+        TARGETED_DEVICE_FAMILY: "4"
+        # Always optimised, even for Run from Xcode: unoptimised, the renderer is ~20x slower, which is enough for
+        # watchOS to kill the app for CPU use. (This means watch-target SwiftUI previews won't run; use the phone's live preview.)
+        SWIFT_OPTIMIZATION_LEVEL: "-O"
+        SWIFT_COMPILATION_MODE: wholemodule
+    dependencies:
+      - target: StippleComplication
+  StippleComplication:
+    type: app-extension
+    platform: watchOS
+    sources:
+      - Complication
+    info:
+      path: Complication/Info.plist
+      properties:
+        CFBundleDisplayName: Stipple
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.adonis.Stipple.watchkitapp.complication
+        GENERATE_INFOPLIST_FILE: YES
+        SKIP_INSTALL: YES
+        TARGETED_DEVICE_FAMILY: "4"
+        ASSETCATALOG_COMPILER_APPICON_NAME: ""
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: ""
+schemes:
+  Stipple:
+    build:
+      targets:
+        Stipple: all
+        StippleWatch: all
+    run:
+      config: Debug
+    archive:
+      config: Release
+  StippleWatch:
+    build:
+      targets:
+        StippleWatch: all
+    run:
+      config: Debug
+    profile:
+      config: Release

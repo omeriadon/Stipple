@@ -1,0 +1,655 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0441A4BB052E0D78C52E542A /* ClockSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1165A14F55241555BA581A70 /* ClockSettingsView.swift */; };
+		2B9C78A5896D23CF256F6B40 /* StippleSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB6896F31F2FD44FD69F48 /* StippleSettings.swift */; };
+		2E1E87B16C6F940669A94DA3 /* StippleWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 79FB3E646D43E0006DF54416 /* StippleWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3047F3EDE7583646C9446643 /* DitherEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6564FBC565D635A9FBF3B74 /* DitherEngine.swift */; };
+		43B437F14F071FF0BFB31BD3 /* StippleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BAF7D3652B2B1C44341A86 /* StippleScreen.swift */; };
+		4E9848A2DD079DE5CDE6147D /* ConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D16B20AE95AA1A6FF6A41B /* ConfigStore.swift */; };
+		51B17C5CC6A99C893A15CD9C /* DitherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F19CBA70246787AB5B500 /* DitherSettingsView.swift */; };
+		543BA2392C5DDDA8A6FBFFB2 /* StippleComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C25A5107C6721C4C6DECE4 /* StippleComplication.swift */; };
+		5A7D96E49F039AF1B6853A02 /* DitherRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC5C1BE12918AE37DC32D01 /* DitherRenderer.swift */; };
+		5A95B901B3B7D510D2F536D6 /* GlassDigits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8AD2B645FC4C05FF6E307F /* GlassDigits.swift */; };
+		5F6ED91CADC38DFD403F281E /* ConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D16B20AE95AA1A6FF6A41B /* ConfigStore.swift */; };
+		958D2C5B68F22ABFCE0BB183 /* StippleSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB6896F31F2FD44FD69F48 /* StippleSettings.swift */; };
+		959B552339C601B7D50417B0 /* SetupGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3855FF4D0F936B10BA79AF5 /* SetupGuideView.swift */; };
+		97B4F00D87BA0E0306BC7DB6 /* StippleMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B221F3E697DB47C2C55C633 /* StippleMark.swift */; };
+		98F0F992A719ECDDEE81486A /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2326AEA62900408A82CCF397 /* Components.swift */; };
+		9AEEEE7FE194F461DA51CB59 /* DitherRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC5C1BE12918AE37DC32D01 /* DitherRenderer.swift */; };
+		A327D3527463894FE44A9207 /* GlassDigits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8AD2B645FC4C05FF6E307F /* GlassDigits.swift */; };
+		ACF756713938024CE4FD9AAC /* StippleWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A470A7F8EDDEBFF83B79D /* StippleWatchApp.swift */; };
+		BD1D315F01BDE42248249DE4 /* DitherEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6564FBC565D635A9FBF3B74 /* DitherEngine.swift */; };
+		C92E88328C49DA918EF3D8A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F3C05FB32C4BA1790657E36 /* Assets.xcassets */; };
+		CCF91840F031FC48A506765D /* StippleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FAA1094982FAC12B6BB12 /* StippleApp.swift */; };
+		D35FB79DEE0983532F0CA408 /* StippleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BAF7D3652B2B1C44341A86 /* StippleScreen.swift */; };
+		DAA48953C87518628DD49025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F83ABDE1879E0C06D568645 /* Assets.xcassets */; };
+		DBDBE399B59775D11CF43E5D /* StippleComplication.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 39B93CBAEE34E4A373FB8B1D /* StippleComplication.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EBB5B6BF43D44E91D52CFE4E /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7AAB33D0DB9134A7254B9C /* Presets.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		41A8B1281D765BE297DEA0E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 808B5089040BCDC802C9561B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 320319EEC6921B3D4F2E6F1D;
+			remoteInfo = StippleComplication;
+		};
+		A3ACE1A58F7D572B9981E7C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 808B5089040BCDC802C9561B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA2FDFFD9DAA47A7C1728BEF;
+			remoteInfo = StippleWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BDFA9E8E5B25627E88C657E4 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				2E1E87B16C6F940669A94DA3 /* StippleWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEA7A9ECE4DE2F3A5178FFB7 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DBDBE399B59775D11CF43E5D /* StippleComplication.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0B7AAB33D0DB9134A7254B9C /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
+		1165A14F55241555BA581A70 /* ClockSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSettingsView.swift; sourceTree = "<group>"; };
+		2326AEA62900408A82CCF397 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		2B221F3E697DB47C2C55C633 /* StippleMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleMark.swift; sourceTree = "<group>"; };
+		2B8AD2B645FC4C05FF6E307F /* GlassDigits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassDigits.swift; sourceTree = "<group>"; };
+		39B93CBAEE34E4A373FB8B1D /* StippleComplication.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StippleComplication.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F3C05FB32C4BA1790657E36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5F83ABDE1879E0C06D568645 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		79FB3E646D43E0006DF54416 /* StippleWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StippleWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82BAF7D3652B2B1C44341A86 /* StippleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleScreen.swift; sourceTree = "<group>"; };
+		87FB6896F31F2FD44FD69F48 /* StippleSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleSettings.swift; sourceTree = "<group>"; };
+		912B81FA7C1966799561D175 /* Stipple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stipple.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B32A470A7F8EDDEBFF83B79D /* StippleWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleWatchApp.swift; sourceTree = "<group>"; };
+		BC2F19CBA70246787AB5B500 /* DitherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitherSettingsView.swift; sourceTree = "<group>"; };
+		BCC5C1BE12918AE37DC32D01 /* DitherRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitherRenderer.swift; sourceTree = "<group>"; };
+		D30FAA1094982FAC12B6BB12 /* StippleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleApp.swift; sourceTree = "<group>"; };
+		D3855FF4D0F936B10BA79AF5 /* SetupGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGuideView.swift; sourceTree = "<group>"; };
+		D4C25A5107C6721C4C6DECE4 /* StippleComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleComplication.swift; sourceTree = "<group>"; };
+		D6564FBC565D635A9FBF3B74 /* DitherEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitherEngine.swift; sourceTree = "<group>"; };
+		D9D16B20AE95AA1A6FF6A41B /* ConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
+		E90F0CA84D6FDBDA5C56268D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2E228DBC68569A437B679D42 = {
+			isa = PBXGroup;
+			children = (
+				88257B00B90BBEE7C11B0367 /* Complication */,
+				36D1D3E26BB1FBF77DE5A422 /* iOS */,
+				B992A5AF4684C56F458E58B2 /* Shared */,
+				CEDA04FCD60B9191C19A7F34 /* Watch */,
+				950E12FD3A4205D66D51C81E /* Products */,
+			);
+			indentWidth = 4;
+			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 1;
+		};
+		36D1D3E26BB1FBF77DE5A422 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5F83ABDE1879E0C06D568645 /* Assets.xcassets */,
+				1165A14F55241555BA581A70 /* ClockSettingsView.swift */,
+				2326AEA62900408A82CCF397 /* Components.swift */,
+				BC2F19CBA70246787AB5B500 /* DitherSettingsView.swift */,
+				0B7AAB33D0DB9134A7254B9C /* Presets.swift */,
+				D3855FF4D0F936B10BA79AF5 /* SetupGuideView.swift */,
+				D30FAA1094982FAC12B6BB12 /* StippleApp.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		88257B00B90BBEE7C11B0367 /* Complication */ = {
+			isa = PBXGroup;
+			children = (
+				E90F0CA84D6FDBDA5C56268D /* Info.plist */,
+				D4C25A5107C6721C4C6DECE4 /* StippleComplication.swift */,
+				2B221F3E697DB47C2C55C633 /* StippleMark.swift */,
+			);
+			path = Complication;
+			sourceTree = "<group>";
+		};
+		950E12FD3A4205D66D51C81E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				912B81FA7C1966799561D175 /* Stipple.app */,
+				39B93CBAEE34E4A373FB8B1D /* StippleComplication.appex */,
+				79FB3E646D43E0006DF54416 /* StippleWatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B992A5AF4684C56F458E58B2 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D9D16B20AE95AA1A6FF6A41B /* ConfigStore.swift */,
+				D6564FBC565D635A9FBF3B74 /* DitherEngine.swift */,
+				BCC5C1BE12918AE37DC32D01 /* DitherRenderer.swift */,
+				2B8AD2B645FC4C05FF6E307F /* GlassDigits.swift */,
+				82BAF7D3652B2B1C44341A86 /* StippleScreen.swift */,
+				87FB6896F31F2FD44FD69F48 /* StippleSettings.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		CEDA04FCD60B9191C19A7F34 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				3F3C05FB32C4BA1790657E36 /* Assets.xcassets */,
+				B32A470A7F8EDDEBFF83B79D /* StippleWatchApp.swift */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		320319EEC6921B3D4F2E6F1D /* StippleComplication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9357BFDA6DE273C362A4527 /* Build configuration list for PBXNativeTarget "StippleComplication" */;
+			buildPhases = (
+				C09E19B938D01B367966B726 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StippleComplication;
+			packageProductDependencies = (
+			);
+			productName = StippleComplication;
+			productReference = 39B93CBAEE34E4A373FB8B1D /* StippleComplication.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B30A5780A0A841F8C5455B23 /* Stipple */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C950994617231FC723B6514 /* Build configuration list for PBXNativeTarget "Stipple" */;
+			buildPhases = (
+				A097A4D28ACDDF70702661F7 /* Sources */,
+				8AD2EE0E597230542E8E8DAB /* Resources */,
+				BDFA9E8E5B25627E88C657E4 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89547C5B48DC2024402E9D26 /* PBXTargetDependency */,
+			);
+			name = Stipple;
+			packageProductDependencies = (
+			);
+			productName = Stipple;
+			productReference = 912B81FA7C1966799561D175 /* Stipple.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CA2FDFFD9DAA47A7C1728BEF /* StippleWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 687BCE47E926FA94ECDD5D61 /* Build configuration list for PBXNativeTarget "StippleWatch" */;
+			buildPhases = (
+				5C468EF4D44522CAC9758FA8 /* Sources */,
+				8301591E00BFC580919BDBB3 /* Resources */,
+				BEA7A9ECE4DE2F3A5178FFB7 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A057C6FDAF399A34AAADA489 /* PBXTargetDependency */,
+			);
+			name = StippleWatch;
+			packageProductDependencies = (
+			);
+			productName = StippleWatch;
+			productReference = 79FB3E646D43E0006DF54416 /* StippleWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		808B5089040BCDC802C9561B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2730;
+				TargetAttributes = {
+					320319EEC6921B3D4F2E6F1D = {
+						DevelopmentTeam = P6PV2R9443;
+						ProvisioningStyle = Automatic;
+					};
+					B30A5780A0A841F8C5455B23 = {
+						DevelopmentTeam = P6PV2R9443;
+						ProvisioningStyle = Automatic;
+					};
+					CA2FDFFD9DAA47A7C1728BEF = {
+						DevelopmentTeam = P6PV2R9443;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F3268A3E6AAD0395FF872208 /* Build configuration list for PBXProject "Stipple" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 2E228DBC68569A437B679D42;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 950E12FD3A4205D66D51C81E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B30A5780A0A841F8C5455B23 /* Stipple */,
+				CA2FDFFD9DAA47A7C1728BEF /* StippleWatch */,
+				320319EEC6921B3D4F2E6F1D /* StippleComplication */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8301591E00BFC580919BDBB3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C92E88328C49DA918EF3D8A0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AD2EE0E597230542E8E8DAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAA48953C87518628DD49025 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C468EF4D44522CAC9758FA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F6ED91CADC38DFD403F281E /* ConfigStore.swift in Sources */,
+				BD1D315F01BDE42248249DE4 /* DitherEngine.swift in Sources */,
+				5A7D96E49F039AF1B6853A02 /* DitherRenderer.swift in Sources */,
+				A327D3527463894FE44A9207 /* GlassDigits.swift in Sources */,
+				43B437F14F071FF0BFB31BD3 /* StippleScreen.swift in Sources */,
+				958D2C5B68F22ABFCE0BB183 /* StippleSettings.swift in Sources */,
+				ACF756713938024CE4FD9AAC /* StippleWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A097A4D28ACDDF70702661F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0441A4BB052E0D78C52E542A /* ClockSettingsView.swift in Sources */,
+				98F0F992A719ECDDEE81486A /* Components.swift in Sources */,
+				4E9848A2DD079DE5CDE6147D /* ConfigStore.swift in Sources */,
+				3047F3EDE7583646C9446643 /* DitherEngine.swift in Sources */,
+				9AEEEE7FE194F461DA51CB59 /* DitherRenderer.swift in Sources */,
+				51B17C5CC6A99C893A15CD9C /* DitherSettingsView.swift in Sources */,
+				5A95B901B3B7D510D2F536D6 /* GlassDigits.swift in Sources */,
+				EBB5B6BF43D44E91D52CFE4E /* Presets.swift in Sources */,
+				959B552339C601B7D50417B0 /* SetupGuideView.swift in Sources */,
+				CCF91840F031FC48A506765D /* StippleApp.swift in Sources */,
+				D35FB79DEE0983532F0CA408 /* StippleScreen.swift in Sources */,
+				2B9C78A5896D23CF256F6B40 /* StippleSettings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C09E19B938D01B367966B726 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				543BA2392C5DDDA8A6FBFFB2 /* StippleComplication.swift in Sources */,
+				97B4F00D87BA0E0306BC7DB6 /* StippleMark.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		89547C5B48DC2024402E9D26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA2FDFFD9DAA47A7C1728BEF /* StippleWatch */;
+			targetProxy = A3ACE1A58F7D572B9981E7C2 /* PBXContainerItemProxy */;
+		};
+		A057C6FDAF399A34AAADA489 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 320319EEC6921B3D4F2E6F1D /* StippleComplication */;
+			targetProxy = 41A8B1281D765BE297DEA0E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		05B05122C5E85A8D0C81A605 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Stipple;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.adonis.Stipple;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adonis.Stipple.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		2FF780673F032E0D2CDC2C42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = P6PV2R9443;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
+		69E5243640EE4F88B4BD054A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Complication/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adonis.Stipple.watchkitapp.complication;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		801B6FA31FF47F884544EA61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Complication/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adonis.Stipple.watchkitapp.complication;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		86FD6EE0C2B6E92D844AE5CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Stipple;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adonis.Stipple;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		98E2EF758ED078E9A7674B55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = P6PV2R9443;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		C874D62BA95A9A1652777B8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Stipple;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.adonis.Stipple;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adonis.Stipple.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		F6721BCD6AB483B6C7F6FEEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Stipple;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adonis.Stipple;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		687BCE47E926FA94ECDD5D61 /* Build configuration list for PBXNativeTarget "StippleWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C874D62BA95A9A1652777B8F /* Debug */,
+				05B05122C5E85A8D0C81A605 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8C950994617231FC723B6514 /* Build configuration list for PBXNativeTarget "Stipple" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6721BCD6AB483B6C7F6FEEE /* Debug */,
+				86FD6EE0C2B6E92D844AE5CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B9357BFDA6DE273C362A4527 /* Build configuration list for PBXNativeTarget "StippleComplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				801B6FA31FF47F884544EA61 /* Debug */,
+				69E5243640EE4F88B4BD054A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F3268A3E6AAD0395FF872208 /* Build configuration list for PBXProject "Stipple" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98E2EF758ED078E9A7674B55 /* Debug */,
+				2FF780673F032E0D2CDC2C42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 808B5089040BCDC802C9561B /* Project object */;
+}
