@@ -53,7 +53,7 @@ struct ClockSettingsView: View {
 				} header: {
 					Text("Format")
 				} footer: {
-					Text("Always On only updates once a minute, so the seconds blur to 00 until you raise your wrist.")
+					Text("Always On only updates once a minute, so the seconds fade out until you raise your wrist.")
 				}
 			}
 		}
