@@ -23,8 +23,20 @@ struct WatchRoot: View {
 		}
 		.ignoresSafeArea()
 		.persistentSystemOverlays(.hidden)
-		// Private SwiftUI API: hides the watchOS time in the corner. Not App Store safe.
-		._statusBarHidden(true)
+		.hidingStatusBarInDevelopment()
+	}
+}
+
+private extension View {
+	/// Private SwiftUI API that hides the watchOS time in the corner. It is not App Store safe, so it only exists in
+	/// Debug builds; Release builds (archives, TestFlight, the App Store) leave the system time showing.
+	@ViewBuilder
+	func hidingStatusBarInDevelopment() -> some View {
+		#if DEBUG
+		self._statusBarHidden(true)
+		#else
+		self
+		#endif
 	}
 }
 

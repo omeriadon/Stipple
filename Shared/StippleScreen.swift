@@ -195,8 +195,8 @@ struct ClockFace: View {
 		}
 	}
 
-	/// In Always On the seconds blur out to a placeholder "00", and blur back to the live value on wake.
-	private func seconds(_ date: Date) -> String { dimmed ? "00" : Self.string(date, "ss") }
+	/// In Always On the seconds blur and fade out (they keep their space, so nothing shifts) and return on wake.
+	private func seconds(_ date: Date) -> String { Self.string(date, "ss") }
 
 	@ViewBuilder
 	private func time(for date: Date) -> some View {
@@ -242,8 +242,7 @@ struct ClockFace: View {
 		Text(seconds(date))
 			.contentTransition(.numericText())
 			.blur(radius: dimmed ? size * 0.09 : 0)
-			.id(dimmed)
-			.transition(.blurReplace)
+			.opacity(dimmed ? 0 : 1)
 	}
 
 	@ViewBuilder
@@ -272,8 +271,7 @@ struct ClockFace: View {
 	private func glassSeconds(_ date: Date, stroke: CGFloat) -> some View {
 		GlyphRow(text: seconds(date), height: size, stroke: stroke)
 			.blur(radius: dimmed ? size * 0.09 : 0)
-			.id(dimmed)
-			.transition(.blurReplace)
+			.opacity(dimmed ? 0 : 1)
 	}
 
 	// MARK: Formatting
