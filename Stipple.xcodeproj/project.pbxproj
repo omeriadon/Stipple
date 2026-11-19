@@ -26,12 +26,14 @@
 		A327D3527463894FE44A9207 /* GlassDigits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8AD2B645FC4C05FF6E307F /* GlassDigits.swift */; };
 		ACF756713938024CE4FD9AAC /* StippleWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A470A7F8EDDEBFF83B79D /* StippleWatchApp.swift */; };
 		BD1D315F01BDE42248249DE4 /* DitherEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6564FBC565D635A9FBF3B74 /* DitherEngine.swift */; };
+		C429E40A67A3B8D939F2FE09 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AD9ADFEFD0F6A153814DE018 /* PrivacyInfo.xcprivacy */; };
 		C92E88328C49DA918EF3D8A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F3C05FB32C4BA1790657E36 /* Assets.xcassets */; };
 		CCF91840F031FC48A506765D /* StippleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FAA1094982FAC12B6BB12 /* StippleApp.swift */; };
 		D35FB79DEE0983532F0CA408 /* StippleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BAF7D3652B2B1C44341A86 /* StippleScreen.swift */; };
 		DAA48953C87518628DD49025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F83ABDE1879E0C06D568645 /* Assets.xcassets */; };
 		DBDBE399B59775D11CF43E5D /* StippleComplication.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 39B93CBAEE34E4A373FB8B1D /* StippleComplication.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EBB5B6BF43D44E91D52CFE4E /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7AAB33D0DB9134A7254B9C /* Presets.swift */; };
+		F4A8C807C75E71709F4DDB3F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5FCC3938B7EA34879F9B62BA /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,10 +87,12 @@
 		39B93CBAEE34E4A373FB8B1D /* StippleComplication.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StippleComplication.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3C05FB32C4BA1790657E36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F83ABDE1879E0C06D568645 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5FCC3938B7EA34879F9B62BA /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		79FB3E646D43E0006DF54416 /* StippleWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StippleWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82BAF7D3652B2B1C44341A86 /* StippleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleScreen.swift; sourceTree = "<group>"; };
 		87FB6896F31F2FD44FD69F48 /* StippleSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleSettings.swift; sourceTree = "<group>"; };
-		912B81FA7C1966799561D175 /* Stipple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stipple.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		912B81FA7C1966799561D175 /* Stipple.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Stipple.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD9ADFEFD0F6A153814DE018 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B32A470A7F8EDDEBFF83B79D /* StippleWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleWatchApp.swift; sourceTree = "<group>"; };
 		BC2F19CBA70246787AB5B500 /* DitherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitherSettingsView.swift; sourceTree = "<group>"; };
 		BCC5C1BE12918AE37DC32D01 /* DitherRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitherRenderer.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				2326AEA62900408A82CCF397 /* Components.swift */,
 				BC2F19CBA70246787AB5B500 /* DitherSettingsView.swift */,
 				0B7AAB33D0DB9134A7254B9C /* Presets.swift */,
+				AD9ADFEFD0F6A153814DE018 /* PrivacyInfo.xcprivacy */,
 				D3855FF4D0F936B10BA79AF5 /* SetupGuideView.swift */,
 				D30FAA1094982FAC12B6BB12 /* StippleApp.swift */,
 			);
@@ -166,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				3F3C05FB32C4BA1790657E36 /* Assets.xcassets */,
+				5FCC3938B7EA34879F9B62BA /* PrivacyInfo.xcprivacy */,
 				B32A470A7F8EDDEBFF83B79D /* StippleWatchApp.swift */,
 			);
 			path = Watch;
@@ -238,7 +244,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2730;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					320319EEC6921B3D4F2E6F1D = {
 						DevelopmentTeam = P6PV2R9443;
@@ -281,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C92E88328C49DA918EF3D8A0 /* Assets.xcassets in Resources */,
+				F4A8C807C75E71709F4DDB3F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA48953C87518628DD49025 /* Assets.xcassets in Resources */,
+				C429E40A67A3B8D939F2FE09 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +367,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Stipple;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.adonis.Stipple;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adonis.Stipple.watchkitapp;
@@ -375,7 +384,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -409,7 +417,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = P6PV2R9443;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -428,7 +435,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -483,6 +489,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Stipple;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -502,7 +509,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -536,7 +542,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = P6PV2R9443;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -562,7 +567,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -578,6 +582,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Stipple;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.adonis.Stipple;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adonis.Stipple.watchkitapp;
@@ -596,6 +601,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Stipple;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

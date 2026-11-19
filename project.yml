@@ -37,6 +37,7 @@ targets:
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.lifestyle
         GENERATE_INFOPLIST_FILE: YES
         TARGETED_DEVICE_FAMILY: "1"
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
     dependencies:
       - target: StippleWatch
   StippleWatch:
@@ -54,6 +55,7 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         SKIP_INSTALL: YES
         TARGETED_DEVICE_FAMILY: "4"
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         # Always optimised, even for Run from Xcode: unoptimised, the renderer is ~20x slower, which is enough for
         # watchOS to kill the app for CPU use. (This means watch-target SwiftUI previews won't run; use the phone's live preview.)
         SWIFT_OPTIMIZATION_LEVEL: "-O"
