@@ -21,7 +21,9 @@ struct DitherSettingsView: View {
 			}
 
 			PresetSection(current: s.bounded()) { preset in
-				withAnimation(.smooth) { store.config.dither = preset.settings }
+				var look = preset.settings
+				look.crownSwitchesPresets = store.config.dither.crownSwitchesPresets
+				withAnimation(.smooth) { store.config.dither = look }
 			}
 
 			Section("Wave") {
@@ -50,6 +52,7 @@ struct DitherSettingsView: View {
 				Toggle("Intro Reveal", isOn: d.intro)
 				Toggle("Replay Intro on Wrist Raise", isOn: d.replayIntroOnWake)
 					.disabled(!s.intro)
+				Toggle("Digital Crown Switches Presets", isOn: d.crownSwitchesPresets)
 			} header: {
 				Text("Motion")
 			} footer: {
@@ -161,7 +164,7 @@ private struct PresetSection: View {
 			ScrollView(.horizontal) {
 				LazyHGrid(rows: [GridItem(.fixed(rowHeight), spacing: 14), GridItem(.fixed(rowHeight))], spacing: 14) {
 					ForEach(presets.all) { preset in
-						PresetTile(preset: preset, selected: preset.settings == current, action: {
+						PresetTile(preset: preset, selected: preset.settings.matches(current), action: {
 							tapped += 1
 							apply(preset)
 						}, delete: preset.isCustom ? {
@@ -201,16 +204,24 @@ private struct PresetTile: View {
 	var delete: (() -> Void)?
 
 	var body: some View {
-		// The menu is attached to the tile's own content, not the button, so it can't claim the whole list row.
-		content
-			.contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 18, style: .continuous))
-			.contextMenu {
-				if let delete {
-					Button("Delete", systemImage: "trash", role: .destructive, action: delete)
-				}
+		// A Form row adopts any `contextMenu` inside it as its own (highlighting the whole row and using the first
+		// tile's actions). A Menu is a real control, so each tile owns its menu: tap applies, touch and hold deletes.
+		if let delete {
+			Menu {
+				Button("Delete", systemImage: "trash", role: .destructive, action: delete)
+			} label: {
+				content
+			} primaryAction: {
+				action()
 			}
-			.onTapGesture(perform: action)
-			.accessibilityAddTraits(.isButton)
+			.menuStyle(.button)
+			.buttonStyle(.plain)
+		} else {
+			content
+				.contentShape(Rectangle())
+				.onTapGesture(perform: action)
+				.accessibilityAddTraits(.isButton)
+		}
 	}
 
 	private var content: some View {

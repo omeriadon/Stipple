@@ -243,3 +243,63 @@ nonisolated private struct PixelArrow: Shape {
 		return path
 	}
 }
+
+// MARK: - Dock picker
+
+/// A miniature watch face split into nine regions. Tap or drag to dock the clock to one; a block slides to it.
+struct DockPicker: View {
+	@Binding var dock: ClockDock
+
+	private let width: CGFloat = 112
+	private var height: CGFloat { width * WatchGeometry.size.height / WatchGeometry.size.width }
+
+	var body: some View {
+		HStack {
+			VStack(alignment: .leading, spacing: 2) {
+				Text("Position")
+				Text(dock.title)
+					.font(.subheadline)
+					.foregroundStyle(.secondary)
+					.contentTransition(.numericText())
+			}
+			Spacer()
+			grid
+		}
+		.sensoryFeedback(.selection, trigger: dock)
+		.animation(.spring(duration: 0.4, bounce: 0.3), value: dock)
+		.accessibilityElement(children: .ignore)
+		.accessibilityLabel("Clock position")
+		.accessibilityValue(dock.title)
+		.accessibilityAdjustableAction { direction in
+			let all = ClockDock.allCases, index = all.firstIndex(of: dock) ?? 0
+			dock = all[(index + (direction == .increment ? 1 : all.count - 1)) % all.count]
+		}
+	}
+
+	private var grid: some View {
+		let cellWidth = width / 3, cellHeight = height / 3
+		return ZStack(alignment: .topLeading) {
+			RoundedRectangle(cornerRadius: 22, style: .continuous).fill(.quaternary.opacity(0.6))
+			ForEach(ClockDock.allCases) { slot in
+				RoundedRectangle(cornerRadius: 2, style: .continuous)
+					.fill(.secondary.opacity(0.35))
+					.frame(width: 6, height: 6)
+					.frame(width: cellWidth, height: cellHeight)
+					.offset(x: CGFloat(slot.column) * cellWidth, y: CGFloat(slot.row) * cellHeight)
+			}
+			RoundedRectangle(cornerRadius: 7, style: .continuous)
+				.fill(.tint)
+				.frame(width: cellWidth - 10, height: cellHeight - 14)
+				.frame(width: cellWidth, height: cellHeight)
+				.offset(x: CGFloat(dock.column) * cellWidth, y: CGFloat(dock.row) * cellHeight)
+		}
+		.frame(width: width, height: height)
+		.contentShape(Rectangle())
+		.gesture(
+			DragGesture(minimumDistance: 0)
+				.onChanged { value in
+					dock = ClockDock(row: Int(value.location.y / cellHeight), column: Int(value.location.x / cellWidth))
+				}
+		)
+	}
+}

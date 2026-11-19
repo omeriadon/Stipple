@@ -124,6 +124,8 @@ nonisolated struct DitherSettings: Codable, Equatable, Sendable {
 	var framesPerSecond = FrameRate.medium.rawValue
 	var intro = true
 	var replayIntroOnWake = false
+	/// Turning the Digital Crown on the watch steps through the presets.
+	var crownSwitchesPresets = true
 
 	// Cells
 	/// Cell edge in points. The watch never draws a cell smaller than 3×3 physical pixels.
@@ -186,6 +188,7 @@ nonisolated struct DitherSettings: Codable, Equatable, Sendable {
 		framesPerSecond = c.value(.framesPerSecond, d.framesPerSecond)
 		intro = c.value(.intro, d.intro)
 		replayIntroOnWake = c.value(.replayIntroOnWake, d.replayIntroOnWake)
+		crownSwitchesPresets = c.value(.crownSwitchesPresets, d.crownSwitchesPresets)
 		cellSize = c.value(.cellSize, d.cellSize)
 		colorLevels = c.value(.colorLevels, d.colorLevels)
 		pattern = c.value(.pattern, d.pattern)
@@ -245,6 +248,38 @@ nonisolated struct DitherSettings: Codable, Equatable, Sendable {
 		return v
 	}
 
+	/// True when the two have the same look, ignoring the crown switch (a preset doesn't carry the user's choice).
+	func matches(_ other: DitherSettings) -> Bool {
+		var copy = self
+		copy.crownSwitchesPresets = other.crownSwitchesPresets
+		return copy == other
+	}
+
+	/// A mix of this look and `target` (`fraction` 0 ... 1) for scrubbing between presets: everything that can vary
+	/// smoothly does; the rest (pattern, cell size, direction, styles) flips at the halfway point.
+	func blended(to target: DitherSettings, _ fraction: Float) -> DitherSettings {
+		var v = fraction < 0.5 ? self : target
+		v.crownSwitchesPresets = crownSwitchesPresets
+		func l(_ a: Float, _ b: Float) -> Float { a + (b - a) * fraction }
+		v.waveSpeed = l(waveSpeed, target.waveSpeed)
+		v.waveFrequency = l(waveFrequency, target.waveFrequency)
+		v.waveAmplitude = l(waveAmplitude, target.waveAmplitude)
+		v.scale = l(scale, target.scale)
+		v.contrast = l(contrast, target.contrast)
+		v.brightness = l(brightness, target.brightness)
+		v.colorLevels = l(colorLevels, target.colorLevels)
+		v.ditherStrength = l(ditherStrength, target.ditherStrength)
+		v.gap = l(gap, target.gap)
+		v.cornerRadius = l(cornerRadius, target.cornerRadius)
+		v.blur = l(blur, target.blur)
+		v.waveColor = waveColor.mixed(target.waveColor, fraction)
+		v.backgroundColor = backgroundColor.mixed(target.backgroundColor, fraction)
+		if palette.count == target.palette.count {
+			v.palette = zip(palette, target.palette).map { $0.mixed($1, fraction) }
+		}
+		return v
+	}
+
 	static func snappedDirection(_ degrees: Float) -> Float {
 		guard degrees.isFinite else { return 135 }
 		let n = degrees.truncatingRemainder(dividingBy: 360)
@@ -292,15 +327,43 @@ nonisolated struct DitherSettings: Codable, Equatable, Sendable {
 // MARK: - Clock settings
 
 nonisolated enum ClockFontDesign: String, Codable, CaseIterable, Identifiable, Sendable {
-	case rounded, standard, monospaced, serif
+	// System faces.
+	case rounded, standard, serif, monospaced, condensed, expanded
+	// Digits drawn by Stipple itself.
+	case pixel, chunky, dots, segment, line, italic, outline
+
 	var id: String { rawValue }
-	var title: String { rawValue.capitalized }
+	var title: String {
+		switch self {
+			case .standard: "Standard"
+			case .segment: "7-Segment"
+			case .line: "Monoline"
+			case .dots: "Dot Matrix"
+			default: rawValue.capitalized
+		}
+	}
+
+	/// Digits Stipple draws as shapes, rather than text in a system font.
+	var isDrawn: Bool { ![.rounded, .standard, .serif, .monospaced, .condensed, .expanded].contains(self) }
+
+	/// The system design used for text (the date, and the time for system faces). Drawn faces pair with the date
+	/// style closest to them.
 	var design: Font.Design {
 		switch self {
-			case .rounded: .rounded
-			case .standard: .default
-			case .monospaced: .monospaced
+			case .rounded, .line, .dots, .chunky: .rounded
+			case .standard, .condensed, .expanded, .italic, .outline: .default
+			case .monospaced, .pixel, .segment: .monospaced
 			case .serif: .serif
+		}
+	}
+
+	/// Horizontal stretch for the system faces. `Font.Width` has no effect on watchOS's SF Compact (and little on
+	/// phone previews), so widths are applied as a real stretch that looks the same on both.
+	var stretch: CGFloat {
+		switch self {
+			case .condensed: 0.8
+			case .expanded: 1.25
+			default: 1
 		}
 	}
 }
@@ -346,8 +409,40 @@ nonisolated enum ClockLayout: String, Codable, CaseIterable, Identifiable, Senda
 	var title: String { self == .inline ? "Inline" : "Stacked" }
 }
 
+/// Which of the screen's nine regions the clock is docked to.
+nonisolated enum ClockDock: String, Codable, CaseIterable, Identifiable, Sendable {
+	case topLeading, top, topTrailing
+	case leading, center, trailing
+	case bottomLeading, bottom, bottomTrailing
+
+	var id: String { rawValue }
+	/// 0 = top, 1 = middle, 2 = bottom.
+	var row: Int { Self.allCases.firstIndex(of: self)! / 3 }
+	/// 0 = leading, 1 = middle, 2 = trailing.
+	var column: Int { Self.allCases.firstIndex(of: self)! % 3 }
+
+	init(row: Int, column: Int) {
+		self = Self.allCases[min(2, max(0, row)) * 3 + min(2, max(0, column))]
+	}
+
+	var title: String {
+		switch self {
+			case .topLeading: "Top Left"
+			case .top: "Top"
+			case .topTrailing: "Top Right"
+			case .leading: "Left"
+			case .center: "Center"
+			case .trailing: "Right"
+			case .bottomLeading: "Bottom Left"
+			case .bottom: "Bottom"
+			case .bottomTrailing: "Bottom Right"
+		}
+	}
+}
+
 nonisolated struct ClockSettings: Codable, Equatable, Sendable {
 	var enabled = false
+	var dock: ClockDock = .center
 	var layout: ClockLayout = .inline
 	var effect: ClockEffect = .overlay
 	var fontDesign: ClockFontDesign = .rounded
@@ -365,6 +460,7 @@ nonisolated struct ClockSettings: Codable, Equatable, Sendable {
 		let c = try decoder.container(keyedBy: CodingKeys.self)
 		let d = ClockSettings()
 		enabled = c.value(.enabled, d.enabled)
+		dock = c.value(.dock, d.dock)
 		layout = c.value(.layout, d.layout)
 		effect = c.value(.effect, d.effect)
 		fontDesign = c.value(.fontDesign, d.fontDesign)

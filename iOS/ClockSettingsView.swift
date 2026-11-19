@@ -4,11 +4,20 @@ struct ClockSettingsView: View {
 	@State private var store = ConfigStore.shared
 
 	var body: some View {
+		// The shared preview header sits above everything, so there is no navigation bar; the font list has its own
+		// back row.
+		NavigationStack {
+			form
+				.toolbar(.hidden, for: .navigationBar)
+		}
+	}
+
+	private var form: some View {
 		@Bindable var store = store
 		let c = $store.config.clock
 		let s = store.config.clock
 
-		Form {
+		return Form {
 			Section {
 				Toggle("Show Clock", isOn: c.enabled.animation(.smooth))
 			} footer: {
@@ -21,12 +30,15 @@ struct ClockSettingsView: View {
 						ForEach(ClockEffect.allCases) { Text($0.title).tag($0) }
 					}
 					.pickerStyle(.segmented)
+					DockPicker(dock: c.dock)
 					Picker("Layout", selection: c.layout) {
 						ForEach(ClockLayout.allCases) { Text($0.title).tag($0) }
 					}
 					if s.effect != .glass {
-						Picker("Font", selection: c.fontDesign) {
-							ForEach(ClockFontDesign.allCases) { Text($0.title).tag($0) }
+						NavigationLink {
+							FontListView()
+						} label: {
+							LabeledContent("Font", value: s.fontDesign.title)
 						}
 					}
 					Picker(s.effect == .glass ? "Thickness" : "Weight", selection: c.weight) {
@@ -67,5 +79,65 @@ struct ClockSettingsView: View {
 			case .window: "The dither shows only through the time, brightened so it stays readable. The date is plain text."
 			case .glass: "The time is drawn in Liquid Glass digits over the dither. The date is plain text."
 		}
+	}
+}
+
+/// Every font, each drawn in itself. Choosing one updates the watch and the preview above, and stays on this list.
+private struct FontListView: View {
+	@State private var store = ConfigStore.shared
+	@Environment(\.dismiss) private var dismiss
+
+	var body: some View {
+		let clock = store.config.clock
+		Form {
+			Section {
+				Button("Clock", systemImage: "chevron.backward") { dismiss() }
+			}
+			Section {
+				ForEach(ClockFontDesign.allCases) { font in
+					Button {
+						store.config.clock.fontDesign = font
+					} label: {
+						HStack {
+							Text(font.title)
+								.foregroundStyle(.primary)
+							Spacer()
+							FontSample(font: font, weight: clock.weight)
+								.foregroundStyle(font == clock.fontDesign ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
+							Image(systemName: "checkmark")
+								.foregroundStyle(.tint)
+								.opacity(font == clock.fontDesign ? 1 : 0)
+						}
+					}
+				}
+			} header: {
+				Text("Font")
+			} footer: {
+				Text("Every font follows the weight you pick. Drawn fonts (pixel, dot matrix, 7-segment, monoline and so on) are made by Stipple.")
+			}
+		}
+		.sensoryFeedback(.selection, trigger: clock.fontDesign)
+		.contentMargins(.top, 16, for: .scrollContent)
+		.toolbar(.hidden, for: .navigationBar)
+	}
+}
+
+private struct FontSample: View {
+	let font: ClockFontDesign
+	let weight: ClockWeight
+
+	var body: some View {
+		Group {
+			if font.isDrawn {
+				DrawnRow(text: "10:28", height: 20, font: font, weight: weight)
+			} else {
+				StretchedWidth(factor: font.stretch) {
+					Text("10:28")
+						.font(.system(size: 26, weight: weight.weight, design: font.design))
+						.monospacedDigit()
+				}
+			}
+		}
+		.frame(height: 28)
 	}
 }

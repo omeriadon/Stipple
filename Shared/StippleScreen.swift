@@ -30,7 +30,7 @@ struct StippleScreen: View {
 				dimsInAlwaysOn: !(clock.enabled && clock.effect == .window)
 			)
 			let face = { (parts: ClockFace.Parts) in
-				ClockFace(settings: clock, height: proxy.size.height, dimmed: dimmed, parts: parts)
+				ClockFace(settings: clock, screen: proxy.size, dimmed: dimmed, parts: parts)
 					.allowsHitTesting(false)
 			}
 			ZStack {
@@ -49,6 +49,9 @@ struct StippleScreen: View {
 					surface
 				}
 			}
+			// A GeometryReader pins its child top-leading. Without a fixed frame, a clock wider than the screen would
+			// grow this stack and push everything off to the right.
+			.frame(width: proxy.size.width, height: proxy.size.height)
 		}
 		.ignoresSafeArea()
 		.onChange(of: gain, initial: true) { _, value in engine.gain = value }
@@ -94,10 +97,11 @@ struct DitherSurface: View {
 			.onChange(of: isTouching) { _, touching in
 				if !touching { engine.setTouch(nil) }
 			}
-			// Always On: the field coasts to a stop (in the engine) while the whole surface dims with it.
+			// Always On: the field coasts to a stop (in the engine) while the surface drops to its dim level. This is
+			// deliberately not animated: Always On redraws about once a second, so a fade is sampled coarsely and can sit
+			// at an in-between brightness for seconds before landing.
 			.opacity(awake || !dimsInAlwaysOn ? 1 : Double(settings.alwaysOnBrightness))
-			// Dims gently on the way down; on wrist raise it snaps straight back to full brightness, no fade-in.
-			.animation(awake ? nil : .easeInOut(duration: Double(DitherSettings.wristDownSlowdown)), value: awake)
+			.transaction(value: awake) { $0.animation = nil }
 			.onChange(of: settings, initial: true) { _, value in engine.setSettings(value) }
 			.onChange(of: awake, initial: true) { _, value in engine.isAwake = value }
 			.onChange(of: reduceMotion, initial: true) { _, value in engine.reduceMotion = value }
@@ -136,13 +140,15 @@ private struct DitherBitmap: View {
 
 // MARK: - Clock
 
-/// The clock, always laid out as one centred stack. It is never scaled down to fit: if it is bigger than the screen it
-/// overflows evenly on every side. Text is always fully opaque.
+/// The clock, docked to one of nine regions of the screen. Spacers with a minimum length of 0 push it toward its dock
+/// and no further, so it only ever moves in from the edges. It is never scaled: if it is bigger than the screen it
+/// overflows evenly. Text is always fully opaque.
 struct ClockFace: View {
 	enum Parts { case all, time, extras }
 
 	let settings: ClockSettings
-	let height: CGFloat
+	/// The full size of the screen the clock is docked within.
+	let screen: CGSize
 	let dimmed: Bool
 	var parts: Parts = .all
 
@@ -150,27 +156,50 @@ struct ClockFace: View {
 	private var showsExtras: Bool { parts != .time }
 	/// Inside a mask (Window), the time is pure shape: no shadow, no glass.
 	private var isMask: Bool { parts == .time }
-	private var size: CGFloat { height * CGFloat(settings.size) }
+	private var size: CGFloat { screen.height * CGFloat(settings.size) }
+	private var dock: ClockDock { settings.dock }
+
+	private var stackAlignment: HorizontalAlignment {
+		switch dock.column {
+			case 0: .leading
+			case 2: .trailing
+			default: .center
+		}
+	}
 
 	var body: some View {
 		// Anchored to the start of the minute so ticks land exactly on the boundary. Always On updates once a minute.
 		TimelineView(.periodic(from: Self.minuteStart, by: settings.showSeconds && !dimmed ? 1 : 60)) { context in
-			content(for: context.date)
-				// Keeps its natural width (so wide text overflows evenly) but takes the full height for the equal gaps.
-				.fixedSize(horizontal: true, vertical: false)
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
+			docked(content(for: context.date))
 		}
 		.animation(.smooth(duration: 0.6), value: dimmed)
 	}
 
+	/// Spacers fill every side except the docked ones, so the block sits against its dock (inset from the edge) and
+	/// can never be pushed past it.
+	private func docked(_ block: some View) -> some View {
+		let inset = screen.width * 0.09
+		return VStack(spacing: 0) {
+			if dock.row != 0 { Spacer(minLength: 0) }
+			HStack(spacing: 0) {
+				if dock.column != 0 { Spacer(minLength: 0) }
+				block.fixedSize()
+				if dock.column != 2 { Spacer(minLength: 0) }
+			}
+			if dock.row != 2 { Spacer(minLength: 0) }
+		}
+		.padding(.top, dock.row == 0 ? inset : 0)
+		.padding(.bottom, dock.row == 2 ? inset : 0)
+		.padding(.leading, dock.column == 0 ? inset : 0)
+		.padding(.trailing, dock.column == 2 ? inset : 0)
+		.frame(width: screen.width, height: screen.height)
+	}
+
 	@ViewBuilder
 	private func content(for date: Date) -> some View {
-		// Equal gaps above the time, between time and date, and below the date.
-		VStack(spacing: 0) {
-			Spacer(minLength: 0)
+		VStack(alignment: stackAlignment, spacing: size * 0.08) {
 			time(for: date)
 				.opacity(showsTime ? 1 : 0)
-			Spacer(minLength: 0)
 			if settings.showDate {
 				Text(date, format: .dateTime.weekday(.abbreviated).day())
 					.font(.system(size: max(12, size * 0.28), weight: .semibold, design: settings.fontDesign.design))
@@ -178,7 +207,6 @@ struct ClockFace: View {
 					.foregroundStyle(settings.color.color)
 					.modifier(ClockShadow(enabled: settings.shadow, size: size))
 					.opacity(showsExtras ? 1 : 0)
-				Spacer(minLength: 0)
 			}
 		}
 		.lineLimit(1)
@@ -201,13 +229,19 @@ struct ClockFace: View {
 	@ViewBuilder
 	private func time(for date: Date) -> some View {
 		let hours = Self.string(date, hourFormat), minutes = Self.string(date, "mm")
-		if settings.effect == .glass, !isMask {
+		if settings.fontDesign.isDrawn, settings.effect != .glass || isMask {
+			drawnTime(hours: hours, minutes: minutes, date: date)
+				.foregroundStyle(settings.color.color)
+				.modifier(ClockShadow(enabled: settings.shadow && !isMask && settings.effect == .overlay, size: size))
+		} else if settings.effect == .glass, !isMask {
 			glassTime(hours: hours, minutes: minutes, date: date)
 				.modifier(ClockShadow(enabled: settings.shadow, size: size))
 		} else {
-			textTime(hours: hours, minutes: minutes, date: date)
-				.foregroundStyle(settings.color.color)
-				.modifier(ClockShadow(enabled: settings.shadow && !isMask && settings.effect == .overlay, size: size))
+			StretchedWidth(factor: settings.fontDesign.stretch) {
+				textTime(hours: hours, minutes: minutes, date: date)
+			}
+			.foregroundStyle(settings.color.color)
+			.modifier(ClockShadow(enabled: settings.shadow && !isMask && settings.effect == .overlay, size: size))
 		}
 	}
 
@@ -226,7 +260,7 @@ struct ClockFace: View {
 						}
 					}
 				case .stacked:
-					VStack(spacing: -size * 0.14) {
+					VStack(alignment: stackAlignment, spacing: -size * 0.14) {
 						Text(hours)
 						Text(minutes)
 						if settings.showSeconds { secondsText(date) }
@@ -245,6 +279,32 @@ struct ClockFace: View {
 			.opacity(dimmed ? 0 : 1)
 	}
 
+	/// Pixel, 7-segment and monoline digits: shapes, so they work as a Window mask too.
+	@ViewBuilder
+	private func drawnTime(hours: String, minutes: String, date: Date) -> some View {
+		let height = size * 0.78
+		let row = { (text: String) in DrawnRow(text: text, height: height, font: settings.fontDesign, weight: settings.weight) }
+		let seconds = row(seconds(date))
+			.blur(radius: dimmed ? size * 0.09 : 0)
+			.opacity(dimmed ? 0 : 1)
+		switch settings.layout {
+			case .inline:
+				HStack(spacing: height * 0.14) {
+					row(hours + ":" + minutes)
+					if settings.showSeconds {
+						row(":")
+						seconds
+					}
+				}
+			case .stacked:
+				VStack(alignment: stackAlignment, spacing: height * 0.16) {
+					row(hours)
+					row(minutes)
+					if settings.showSeconds { seconds }
+				}
+		}
+	}
+
 	@ViewBuilder
 	private func glassTime(hours: String, minutes: String, date: Date) -> some View {
 		let stroke = size * settings.weight.glyphStroke
@@ -259,7 +319,7 @@ struct ClockFace: View {
 						}
 					}
 				case .stacked:
-					VStack(spacing: size * 0.1) {
+					VStack(alignment: stackAlignment, spacing: size * 0.1) {
 						GlyphRow(text: hours, height: size, stroke: stroke)
 						GlyphRow(text: minutes, height: size, stroke: stroke)
 						if settings.showSeconds { glassSeconds(date, stroke: stroke) }
@@ -304,7 +364,7 @@ private struct ClockShadow: ViewModifier {
 	}
 }
 
-private extension ClockWeight {
+nonisolated extension ClockWeight {
 	/// Stroke width of the glass digits, as a fraction of their height.
 	var glyphStroke: CGFloat {
 		switch self {

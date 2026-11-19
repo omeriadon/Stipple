@@ -188,7 +188,8 @@ struct Preset: Identifiable, Codable, Equatable {
 	]
 }
 
-/// The user's own presets, saved on the phone.
+/// The user's own presets. They are made and saved on the phone, which hands a copy to the watch so the Digital Crown
+/// can step through them too.
 @MainActor
 @Observable
 final class PresetStore {
@@ -198,6 +199,9 @@ final class PresetStore {
 	private(set) var custom: [Preset] {
 		didSet {
 			if let data = try? JSONEncoder().encode(custom) { UserDefaults.standard.set(data, forKey: Self.key) }
+				#if os(iOS)
+					ConfigStore.shared.presetsChanged()
+				#endif
 		}
 	}
 
@@ -206,6 +210,12 @@ final class PresetStore {
 	private init() {
 		let data = UserDefaults.standard.data(forKey: Self.key)
 		custom = data.flatMap { try? JSONDecoder().decode([Preset].self, from: $0) } ?? []
+	}
+
+	/// The watch takes the phone's list as it is.
+	func replaceCustom(with presets: [Preset]) {
+		guard presets != custom else { return }
+		custom = presets
 	}
 
 	var suggestedName: String { "My Preset \(custom.count + 1)" }

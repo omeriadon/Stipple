@@ -40,14 +40,14 @@ struct RootView: View {
 
 private struct MainTabs: UIViewControllerRepresentable {
 	func makeUIViewController(context: Context) -> UITabBarController {
-		let controller = UITabBarController()
+		let controller = IconTabBarController()
 		let dither = Self.host(DitherSettingsView())
 		let clock = Self.host(ClockSettingsView())
 		// Shown as the tab bar's prominent tab. Tapping it opens the setup sheet; it is never actually selected.
 		let setup = Self.makeSetupTab()
 		controller.tabs = [
-			UITab(title: "Dither", image: UIImage(systemName: "circle.grid.3x3.fill"), identifier: "dither") { _ in dither },
-			UITab(title: "Clock", image: UIImage(systemName: "clock"), identifier: "clock") { _ in clock },
+			UITab(title: "", image: UIImage(systemName: "circle.grid.3x3.fill"), identifier: "dither") { _ in dither },
+			UITab(title: "", image: UIImage(systemName: "clock"), identifier: "clock") { _ in clock },
 			setup,
 		]
 		if #available(iOS 27.0, *) {
@@ -63,12 +63,22 @@ private struct MainTabs: UIViewControllerRepresentable {
 	private static func makeSetupTab() -> UITab {
 		let image = UIImage(systemName: "applewatch")
 		if #available(iOS 27.0, *) {
-			return UITab(title: "Setup", image: image, identifier: setupID) { _ in UIViewController() }
+			return UITab(title: "", image: image, identifier: setupID) { _ in UIViewController() }
 		}
 		let tab = UISearchTab { _ in UIViewController() }
-		tab.title = "Setup"
+		tab.title = ""
 		tab.image = image
 		return tab
+	}
+
+	/// Icons only. The titles are empty, so VoiceOver gets its names here instead.
+	final class IconTabBarController: UITabBarController {
+		private static let names = ["Dither", "Clock", "Setup"]
+
+		override func viewDidLayoutSubviews() {
+			super.viewDidLayoutSubviews()
+			for (item, name) in zip(tabBar.items ?? [], Self.names) { item.accessibilityLabel = name }
+		}
 	}
 
 	func updateUIViewController(_: UITabBarController, context _: Context) {}

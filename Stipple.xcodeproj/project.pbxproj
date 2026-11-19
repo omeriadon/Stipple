@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0441A4BB052E0D78C52E542A /* ClockSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1165A14F55241555BA581A70 /* ClockSettingsView.swift */; };
+		044816B0EA7D2CBA3674136E /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1059DAD9F31A821A6DCA1F /* Presets.swift */; };
+		27FA1CD20CD845414A15E111 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1059DAD9F31A821A6DCA1F /* Presets.swift */; };
 		2B9C78A5896D23CF256F6B40 /* StippleSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB6896F31F2FD44FD69F48 /* StippleSettings.swift */; };
 		2E1E87B16C6F940669A94DA3 /* StippleWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 79FB3E646D43E0006DF54416 /* StippleWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3047F3EDE7583646C9446643 /* DitherEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6564FBC565D635A9FBF3B74 /* DitherEngine.swift */; };
+		3DFBCE25A6AEE5EF27B8FCA6 /* DrawnDigits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0080EBDC3EF1F66176E498 /* DrawnDigits.swift */; };
 		43B437F14F071FF0BFB31BD3 /* StippleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BAF7D3652B2B1C44341A86 /* StippleScreen.swift */; };
+		45FF911A9C72AEFF76222E51 /* DrawnDigits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0080EBDC3EF1F66176E498 /* DrawnDigits.swift */; };
 		4E9848A2DD079DE5CDE6147D /* ConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D16B20AE95AA1A6FF6A41B /* ConfigStore.swift */; };
 		51B17C5CC6A99C893A15CD9C /* DitherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F19CBA70246787AB5B500 /* DitherSettingsView.swift */; };
 		543BA2392C5DDDA8A6FBFFB2 /* StippleComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C25A5107C6721C4C6DECE4 /* StippleComplication.swift */; };
@@ -32,7 +36,6 @@
 		D35FB79DEE0983532F0CA408 /* StippleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BAF7D3652B2B1C44341A86 /* StippleScreen.swift */; };
 		DAA48953C87518628DD49025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F83ABDE1879E0C06D568645 /* Assets.xcassets */; };
 		DBDBE399B59775D11CF43E5D /* StippleComplication.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 39B93CBAEE34E4A373FB8B1D /* StippleComplication.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		EBB5B6BF43D44E91D52CFE4E /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7AAB33D0DB9134A7254B9C /* Presets.swift */; };
 		F4A8C807C75E71709F4DDB3F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5FCC3938B7EA34879F9B62BA /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0B7AAB33D0DB9134A7254B9C /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
+		0E1059DAD9F31A821A6DCA1F /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		1165A14F55241555BA581A70 /* ClockSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSettingsView.swift; sourceTree = "<group>"; };
 		2326AEA62900408A82CCF397 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		2B221F3E697DB47C2C55C633 /* StippleMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleMark.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 		3F3C05FB32C4BA1790657E36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F83ABDE1879E0C06D568645 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FCC3938B7EA34879F9B62BA /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		6E0080EBDC3EF1F66176E498 /* DrawnDigits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawnDigits.swift; sourceTree = "<group>"; };
 		79FB3E646D43E0006DF54416 /* StippleWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StippleWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82BAF7D3652B2B1C44341A86 /* StippleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleScreen.swift; sourceTree = "<group>"; };
 		87FB6896F31F2FD44FD69F48 /* StippleSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StippleSettings.swift; sourceTree = "<group>"; };
@@ -126,7 +130,6 @@
 				1165A14F55241555BA581A70 /* ClockSettingsView.swift */,
 				2326AEA62900408A82CCF397 /* Components.swift */,
 				BC2F19CBA70246787AB5B500 /* DitherSettingsView.swift */,
-				0B7AAB33D0DB9134A7254B9C /* Presets.swift */,
 				AD9ADFEFD0F6A153814DE018 /* PrivacyInfo.xcprivacy */,
 				D3855FF4D0F936B10BA79AF5 /* SetupGuideView.swift */,
 				D30FAA1094982FAC12B6BB12 /* StippleApp.swift */,
@@ -160,7 +163,9 @@
 				D9D16B20AE95AA1A6FF6A41B /* ConfigStore.swift */,
 				D6564FBC565D635A9FBF3B74 /* DitherEngine.swift */,
 				BCC5C1BE12918AE37DC32D01 /* DitherRenderer.swift */,
+				6E0080EBDC3EF1F66176E498 /* DrawnDigits.swift */,
 				2B8AD2B645FC4C05FF6E307F /* GlassDigits.swift */,
+				0E1059DAD9F31A821A6DCA1F /* Presets.swift */,
 				82BAF7D3652B2B1C44341A86 /* StippleScreen.swift */,
 				87FB6896F31F2FD44FD69F48 /* StippleSettings.swift */,
 			);
@@ -310,7 +315,9 @@
 				5F6ED91CADC38DFD403F281E /* ConfigStore.swift in Sources */,
 				BD1D315F01BDE42248249DE4 /* DitherEngine.swift in Sources */,
 				5A7D96E49F039AF1B6853A02 /* DitherRenderer.swift in Sources */,
+				45FF911A9C72AEFF76222E51 /* DrawnDigits.swift in Sources */,
 				A327D3527463894FE44A9207 /* GlassDigits.swift in Sources */,
+				044816B0EA7D2CBA3674136E /* Presets.swift in Sources */,
 				43B437F14F071FF0BFB31BD3 /* StippleScreen.swift in Sources */,
 				958D2C5B68F22ABFCE0BB183 /* StippleSettings.swift in Sources */,
 				ACF756713938024CE4FD9AAC /* StippleWatchApp.swift in Sources */,
@@ -327,8 +334,9 @@
 				3047F3EDE7583646C9446643 /* DitherEngine.swift in Sources */,
 				9AEEEE7FE194F461DA51CB59 /* DitherRenderer.swift in Sources */,
 				51B17C5CC6A99C893A15CD9C /* DitherSettingsView.swift in Sources */,
+				3DFBCE25A6AEE5EF27B8FCA6 /* DrawnDigits.swift in Sources */,
 				5A95B901B3B7D510D2F536D6 /* GlassDigits.swift in Sources */,
-				EBB5B6BF43D44E91D52CFE4E /* Presets.swift in Sources */,
+				27FA1CD20CD845414A15E111 /* Presets.swift in Sources */,
 				959B552339C601B7D50417B0 /* SetupGuideView.swift in Sources */,
 				CCF91840F031FC48A506765D /* StippleApp.swift in Sources */,
 				D35FB79DEE0983532F0CA408 /* StippleScreen.swift in Sources */,
