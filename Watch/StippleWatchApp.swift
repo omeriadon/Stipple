@@ -19,8 +19,11 @@ struct WatchRoot: View {
 	@State private var progress = 0.0
 	@State private var settleTask: Task<Void, Never>?
 
-	/// Crown travel for one whole preset. Small, so a short turn is enough.
-	private static let crownSpanPerPreset = 0.4
+	/// Crown travel for one whole preset.
+	private static let crownSpanPerPreset = 5.0
+	/// One haptic tick per detent: five per preset.
+	private static let crownDetent = 1.0
+	private static let crownRange = 50.0
 
 	/// The preset the crown would blend toward in this direction.
 	private func neighbour(_ step: Int) -> Preset? {
@@ -52,8 +55,15 @@ struct WatchRoot: View {
 		.hidingStatusBarInDevelopment()
 		.focusable()
 		// The crown's own detent ticks are the haptics: light, and in step with the turn.
-		.digitalCrownRotation($crown, from: -100_000, through: 100_000, by: 0.04, sensitivity: .medium, isContinuous: false, isHapticFeedbackEnabled: true)
-		.onChange(of: crown) { old, new in crownMoved(by: new - old) }
+		// A small, wrapping range: the crown builds a table of detents for its range, so a huge one exhausts the watch's memory.
+		.digitalCrownRotation($crown, from: 0, through: Self.crownRange, by: Self.crownDetent, sensitivity: .low, isContinuous: true, isHapticFeedbackEnabled: true)
+		.onChange(of: crown) { old, new in
+			// The value wraps around the range, so a jump across the seam is really a small step.
+			var delta = new - old
+			if delta > Self.crownRange / 2 { delta -= Self.crownRange }
+			if delta < -Self.crownRange / 2 { delta += Self.crownRange }
+			crownMoved(by: delta)
+		}
 	}
 
 	private func crownMoved(by delta: Double) {
@@ -96,15 +106,13 @@ struct WatchRoot: View {
 }
 
 private extension View {
-	/// Private SwiftUI API that hides the watchOS time in the corner. It is not App Store safe, so it only exists in
-	/// Debug builds; Release builds (archives, TestFlight, the App Store) leave the system time showing.
 	@ViewBuilder
 	func hidingStatusBarInDevelopment() -> some View {
-		#if DEBUG
+//		#if DEBUG
 		self._statusBarHidden(true)
-		#else
-		self
-		#endif
+//		#else
+//		self
+//		#endif
 	}
 }
 
